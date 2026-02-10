@@ -52,11 +52,10 @@ export default function ContactContent() {
             {/* Form */}
             <ScrollReveal direction="left">
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Replace with your Web3Forms access key */}
                 <input
                   type="hidden"
                   name="access_key"
-                  value="YOUR_WEB3FORMS_KEY"
+                  value="8c2000fa-63e0-46dc-a2e7-4580609a022f"
                 />
                 <input
                   type="hidden"
