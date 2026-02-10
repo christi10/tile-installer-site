@@ -42,7 +42,7 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
           <Link
             href="/contact"
             onClick={onClose}
-            className="mt-4 inline-flex items-center px-8 py-4 bg-accent text-white font-heading font-semibold tracking-wide uppercase hover:bg-accent-light transition-all duration-300"
+            className="mt-4 inline-flex items-center px-8 py-4 bg-accent text-white font-heading font-semibold tracking-wide uppercase rounded-lg hover:bg-accent-light transition-all duration-300"
           >
             Get a Quote
           </Link>
