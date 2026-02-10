@@ -201,7 +201,7 @@ export default function ContactContent() {
                         <p className="text-white font-semibold text-sm">
                           Phone
                         </p>
-                        <p className="text-text-muted">+44 (0) 123 456 7890</p>
+                        <a href="tel:+441234567890" className="text-text-muted hover:text-accent transition-colors">+44 (0) 123 456 7890</a>
                       </div>
                     </li>
                     <li className="flex items-start gap-4">
@@ -224,7 +224,7 @@ export default function ContactContent() {
                         <p className="text-white font-semibold text-sm">
                           Email
                         </p>
-                        <p className="text-text-muted">info@tilecraft.co.uk</p>
+                        <a href="mailto:info@tilecraft.co.uk" className="text-text-muted hover:text-accent transition-colors">info@tilecraft.co.uk</a>
                       </div>
                     </li>
                     <li className="flex items-start gap-4">
