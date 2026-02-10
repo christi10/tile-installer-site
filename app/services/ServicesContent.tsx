@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Button from "@/components/ui/Button";
+import CostCalculator from "@/components/CostCalculator";
 
 const services = [
   {
@@ -105,9 +107,11 @@ export default function ServicesContent() {
                   transition={{ duration: 0.3 }}
                   className="relative aspect-[4/3] overflow-hidden"
                 >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url('${service.image}')` }}
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-accent/10" />
                 </motion.div>
@@ -159,6 +163,18 @@ export default function ServicesContent() {
           </div>
         </section>
       ))}
+
+      {/* Cost Calculator */}
+      <section className="py-24 bg-primary-light">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            label="Estimate"
+            title="Cost Calculator"
+            description="Get a rough estimate for your tiling project. Final pricing will be confirmed after a site visit."
+          />
+          <CostCalculator />
+        </div>
+      </section>
     </main>
   );
 }

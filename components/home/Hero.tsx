@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 
@@ -8,12 +9,12 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with overlay */}
       <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1920&q=80')",
-          }}
+        <Image
+          src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1920&q=80"
+          alt="Premium tile installation showcase"
+          fill
+          priority
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-primary" />
         {/* Geometric overlay pattern */}

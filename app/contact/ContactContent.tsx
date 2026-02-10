@@ -4,6 +4,10 @@ import { useState, FormEvent } from "react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
+const WEB3FORMS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+  "8c2000fa-63e0-46dc-a2e7-4580609a022f";
+
 export default function ContactContent() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
@@ -55,7 +59,7 @@ export default function ContactContent() {
                 <input
                   type="hidden"
                   name="access_key"
-                  value={process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY}
+                  value={WEB3FORMS_KEY}
                 />
                 <input
                   type="hidden"
@@ -294,6 +298,29 @@ export default function ContactContent() {
               </div>
             </ScrollReveal>
           </div>
+        </div>
+      </section>
+      {/* Map */}
+      <section className="py-24 bg-primary-light">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <h2 className="font-heading text-2xl font-bold text-white mb-2 text-center">
+              Our Service Area
+            </h2>
+            <p className="text-text-muted text-center mb-8">
+              Serving London and the South East of England
+            </p>
+            <div className="relative aspect-[16/9] overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317716.60647885756!2d-0.43124089999999996!3d51.528308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2sus!4v1700000000000"
+                className="absolute inset-0 w-full h-full border-0"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="TileCraft service area - London and South East England"
+              />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </main>

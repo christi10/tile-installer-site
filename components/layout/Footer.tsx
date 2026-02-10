@@ -1,4 +1,5 @@
 import Link from "next/link";
+import NewsletterForm from "./NewsletterForm";
 
 const services = [
   { label: "Residential Tiling", href: "/services#residential" },
@@ -12,6 +13,8 @@ const quickLinks = [
   { label: "About Us", href: "/about" },
   { label: "Reviews", href: "/reviews" },
   { label: "Contact", href: "/contact" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export default function Footer() {
@@ -144,11 +147,42 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Newsletter */}
+        <div className="mt-12 pt-8 border-t border-white/5">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h3 className="font-heading font-semibold text-white text-sm">
+                Stay Updated
+              </h3>
+              <p className="text-text-muted text-xs mt-1">
+                Get tiling tips and project inspiration in your inbox.
+              </p>
+            </div>
+            <NewsletterForm />
+          </div>
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-text-muted text-xs">
-            &copy; {new Date().getFullYear()} TileCraft. All rights reserved.
-          </p>
+        <div className="mt-8 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <p className="text-text-muted text-xs">
+              &copy; {new Date().getFullYear()} TileCraft. All rights reserved.
+            </p>
+            <div className="flex items-center gap-4 text-text-muted text-xs">
+              <Link
+                href="/privacy"
+                className="hover:text-accent transition-colors duration-200"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms"
+                className="hover:text-accent transition-colors duration-200"
+              >
+                Terms of Service
+              </Link>
+            </div>
+          </div>
           <div className="flex items-center gap-4">
             <a
               href="#"

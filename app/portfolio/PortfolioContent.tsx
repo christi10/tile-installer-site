@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -74,13 +75,42 @@ const projects = [
   },
 ];
 
+function SkeletonCard() {
+  return (
+    <div className="relative overflow-hidden aspect-[4/3] bg-surface-dark animate-pulse">
+      <div className="absolute top-4 left-4 w-20 h-6 bg-white/5 rounded" />
+      <div className="absolute bottom-6 left-6 right-6">
+        <div className="w-3/4 h-5 bg-white/5 rounded mb-2" />
+        <div className="w-1/3 h-4 bg-white/5 rounded" />
+      </div>
+    </div>
+  );
+}
+
 export default function PortfolioContent() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [isFiltering, setIsFiltering] = useState(false);
+  const [displayedProjects, setDisplayedProjects] = useState(projects);
 
-  const filtered =
-    activeCategory === "All"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
+  useEffect(() => {
+    if (isFiltering) {
+      const timer = setTimeout(() => {
+        setDisplayedProjects(
+          activeCategory === "All"
+            ? projects
+            : projects.filter((p) => p.category === activeCategory)
+        );
+        setIsFiltering(false);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [isFiltering, activeCategory]);
+
+  function handleCategoryChange(category: string) {
+    if (category === activeCategory) return;
+    setIsFiltering(true);
+    setActiveCategory(category);
+  }
 
   return (
     <main className="pt-20">
@@ -104,7 +134,7 @@ export default function PortfolioContent() {
               {categories.map((cat) => (
                 <button
                   key={cat}
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => handleCategoryChange(cat)}
                   className={`px-5 py-2 text-sm font-heading font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                     activeCategory === cat
                       ? "bg-accent text-white"
@@ -122,61 +152,69 @@ export default function PortfolioContent() {
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            <AnimatePresence mode="popLayout">
-              {filtered.map((project) => (
-                <motion.div
-                  key={project.slug}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Link
-                    href={`/portfolio/${project.slug}`}
-                    className="group block"
+            {isFiltering ? (
+              <>
+                <SkeletonCard />
+                <SkeletonCard />
+                <SkeletonCard />
+              </>
+            ) : (
+              <AnimatePresence mode="popLayout">
+                {displayedProjects.map((project) => (
+                  <motion.div
+                    key={project.slug}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    <div className="relative overflow-hidden aspect-[4/3]">
-                      <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                        style={{
-                          backgroundImage: `url('${project.image}')`,
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+                    <Link
+                      href={`/portfolio/${project.slug}`}
+                      className="group block"
+                    >
+                      <div className="relative overflow-hidden aspect-[4/3]">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
 
-                      <div className="absolute top-4 left-4">
-                        <span className="inline-block px-3 py-1 bg-accent/90 text-white text-xs font-heading font-semibold uppercase tracking-wider">
-                          {project.category}
-                        </span>
-                      </div>
+                        <div className="absolute top-4 left-4">
+                          <span className="inline-block px-3 py-1 bg-accent/90 text-white text-xs font-heading font-semibold uppercase tracking-wider">
+                            {project.category}
+                          </span>
+                        </div>
 
-                      <div className="absolute bottom-0 left-0 right-0 p-6">
-                        <h3 className="font-heading text-xl font-bold text-white group-hover:text-accent transition-colors duration-300">
-                          {project.title}
-                        </h3>
-                        <span className="inline-flex items-center mt-2 text-text-muted text-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                          View Project
-                          <svg
-                            className="w-4 h-4 ml-1"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M17 8l4 4m0 0l-4 4m4-4H3"
-                            />
-                          </svg>
-                        </span>
+                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                          <h3 className="font-heading text-xl font-bold text-white group-hover:text-accent transition-colors duration-300">
+                            {project.title}
+                          </h3>
+                          <span className="inline-flex items-center mt-2 text-text-muted text-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                            View Project
+                            <svg
+                              className="w-4 h-4 ml-1"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                              />
+                            </svg>
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </AnimatePresence>
+                    </Link>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            )}
           </motion.div>
         </div>
       </section>

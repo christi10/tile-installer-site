@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import CookieConsent from "@/components/CookieConsent";
+import FloatingCTA from "@/components/FloatingCTA";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -61,6 +64,58 @@ export const metadata: Metadata = {
   },
 };
 
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "TileCraft",
+  description:
+    "Expert tile installation services for residential and commercial projects. Bathrooms, kitchens, floors, and custom tiling with precision craftsmanship.",
+  url: "https://tilecraft.co.uk",
+  telephone: "+441234567890",
+  email: "info@tilecraft.co.uk",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "London",
+    addressRegion: "South East England",
+    addressCountry: "GB",
+  },
+  areaServed: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: 51.5074,
+      longitude: -0.1278,
+    },
+    geoRadius: "80000",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "18:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "09:00",
+      closes: "16:00",
+    },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Tiling Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Residential Tiling" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Tiling" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Tile Renovation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Tile Design" } },
+    ],
+  },
+  image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=80",
+  priceRange: "££",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -68,12 +123,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd),
+          }}
+        />
+      </head>
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} antialiased`}
       >
         <Header />
         {children}
         <Footer />
+        <CookieConsent />
+        <FloatingCTA />
+        <Analytics />
       </body>
     </html>
   );

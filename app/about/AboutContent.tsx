@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
@@ -88,12 +89,11 @@ export default function AboutContent() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
               <div className="relative aspect-[4/3] overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage:
-                      "url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80')",
-                  }}
+                <Image
+                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
+                  alt="TileCraft team at work"
+                  fill
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-accent/10" />
                 {/* Experience badge */}

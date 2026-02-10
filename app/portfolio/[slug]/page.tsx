@@ -11,6 +11,8 @@ const projects: Record<
     image: string;
     gallery: string[];
     details: { label: string; value: string }[];
+    beforeImage?: string;
+    afterImage?: string;
   }
 > = {
   "modern-bathroom-suite": {
@@ -31,6 +33,10 @@ const projects: Record<
       { label: "Duration", value: "5 days" },
       { label: "Location", value: "London" },
     ],
+    beforeImage:
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80",
+    afterImage:
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
   },
   "restaurant-floor": {
     title: "Restaurant Floor Design",
@@ -69,6 +75,10 @@ const projects: Record<
       { label: "Duration", value: "3 days" },
       { label: "Location", value: "Richmond, London" },
     ],
+    beforeImage:
+      "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&q=80",
+    afterImage:
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
   },
   "luxury-spa": {
     title: "Luxury Spa Tiling",
@@ -145,6 +155,10 @@ const projects: Record<
       { label: "Duration", value: "10 days" },
       { label: "Location", value: "Bath" },
     ],
+    beforeImage:
+      "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800&q=80",
+    afterImage:
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80",
   },
   "mosaic-feature-wall": {
     title: "Mosaic Feature Wall",

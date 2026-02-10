@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Button from "@/components/ui/Button";
+import BeforeAfterSlider from "@/components/ui/BeforeAfterSlider";
 
 interface ProjectDetailProps {
   project: {
@@ -14,6 +16,8 @@ interface ProjectDetailProps {
     image: string;
     gallery: string[];
     details: { label: string; value: string }[];
+    beforeImage?: string;
+    afterImage?: string;
   };
 }
 
@@ -24,9 +28,12 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
     <main className="pt-20">
       {/* Hero Image */}
       <section className="relative h-[60vh] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${project.image}')` }}
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          priority
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent" />
 
@@ -76,6 +83,21 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                 </p>
               </ScrollReveal>
 
+              {/* Before/After Slider */}
+              {project.beforeImage && project.afterImage && (
+                <div className="mt-12">
+                  <h3 className="font-heading text-xl font-bold text-white mb-6">
+                    Before & After
+                  </h3>
+                  <BeforeAfterSlider
+                    beforeImage={project.beforeImage}
+                    afterImage={project.afterImage}
+                    beforeLabel="Before"
+                    afterLabel="After"
+                  />
+                </div>
+              )}
+
               {/* Gallery */}
               <div className="mt-12">
                 <h3 className="font-heading text-xl font-bold text-white mb-6">
@@ -88,9 +110,11 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         onClick={() => setSelectedImage(img)}
                         className="relative aspect-square overflow-hidden group cursor-pointer"
                       >
-                        <div
-                          className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                          style={{ backgroundImage: `url('${img}')` }}
+                        <Image
+                          src={img}
+                          alt={`${project.title} gallery image ${i + 1}`}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
                           <svg
@@ -165,10 +189,14 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
               className="relative max-w-4xl max-h-[80vh] w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <div
-                className="w-full h-[70vh] bg-cover bg-center"
-                style={{ backgroundImage: `url('${selectedImage}')` }}
-              />
+              <div className="relative w-full h-[70vh]">
+                <Image
+                  src={selectedImage}
+                  alt="Project image enlarged"
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <button
                 onClick={() => setSelectedImage(null)}
                 className="absolute top-4 right-4 w-10 h-10 bg-black/50 text-white flex items-center justify-center hover:bg-accent transition-colors cursor-pointer"
