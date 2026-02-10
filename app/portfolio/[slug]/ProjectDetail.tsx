@@ -51,7 +51,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
               </svg>
               Back to Portfolio
             </Link>
-            <span className="inline-block px-3 py-1 bg-accent text-white text-xs font-heading font-semibold uppercase tracking-wider mb-3">
+            <span className="inline-block px-3 py-1 bg-accent text-white text-xs font-heading font-semibold uppercase tracking-wider mb-3 rounded-lg">
               {project.category}
             </span>
             <h1 className="font-heading text-3xl md:text-5xl font-bold text-white">
@@ -86,7 +86,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     <ScrollReveal key={i} delay={i * 0.1}>
                       <button
                         onClick={() => setSelectedImage(img)}
-                        className="relative aspect-square overflow-hidden group cursor-pointer"
+                        className="relative aspect-square overflow-hidden group cursor-pointer rounded-lg"
                       >
                         <div
                           className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
@@ -117,7 +117,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             {/* Project Details Sidebar */}
             <div>
               <ScrollReveal direction="right">
-                <div className="bg-surface-dark border border-white/5 p-6 sticky top-28">
+                <div className="bg-surface-dark border border-white/5 p-6 sticky top-28 rounded-lg">
                   <h3 className="font-heading text-lg font-bold text-white mb-6">
                     Project Details
                   </h3>
@@ -166,12 +166,12 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
               onClick={(e) => e.stopPropagation()}
             >
               <div
-                className="w-full h-[70vh] bg-cover bg-center"
+                className="w-full h-[70vh] bg-cover bg-center rounded-lg"
                 style={{ backgroundImage: `url('${selectedImage}')` }}
               />
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 w-10 h-10 bg-black/50 text-white flex items-center justify-center hover:bg-accent transition-colors cursor-pointer"
+                className="absolute top-4 right-4 w-10 h-10 bg-black/50 text-white flex items-center justify-center hover:bg-accent transition-colors cursor-pointer rounded-lg"
                 aria-label="Close lightbox"
               >
                 <svg

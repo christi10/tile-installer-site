@@ -20,7 +20,7 @@ export default function Button({
   onClick,
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center font-heading font-semibold tracking-wide uppercase transition-all duration-300 cursor-pointer";
+    "inline-flex items-center justify-center font-heading font-semibold tracking-wide uppercase transition-all duration-300 cursor-pointer rounded-lg";
 
   const variants = {
     primary:

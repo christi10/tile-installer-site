@@ -87,7 +87,7 @@ export default function AboutContent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{
@@ -97,7 +97,7 @@ export default function AboutContent() {
                 />
                 <div className="absolute inset-0 bg-accent/10" />
                 {/* Experience badge */}
-                <div className="absolute bottom-6 right-6 bg-accent px-6 py-4 text-center">
+                <div className="absolute bottom-6 right-6 bg-accent px-6 py-4 text-center rounded-lg">
                   <span className="block font-heading text-3xl font-bold text-white">
                     <AnimatedCounter target={15} suffix="+" />
                   </span>
@@ -155,8 +155,8 @@ export default function AboutContent() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {values.map((value, i) => (
               <ScrollReveal key={value.title} delay={i * 0.1}>
-                <div className="bg-surface-dark p-8 border border-white/5 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 text-accent mb-6">
+                <div className="bg-surface-dark p-8 border border-white/5 text-center rounded-lg">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 text-accent mb-6 rounded-lg">
                     {value.icon}
                   </div>
                   <h3 className="font-heading text-xl font-bold text-white mb-3">
