@@ -113,7 +113,7 @@ export default function ReviewsContent() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {reviews.map((review, i) => (
               <ScrollReveal key={review.name} delay={i * 0.08}>
-                <div className="bg-surface-dark p-8 border border-white/5 h-full flex flex-col relative">
+                <div className="bg-surface-dark p-8 border border-white/5 h-full flex flex-col relative rounded-lg">
                   <span className="absolute top-4 right-6 text-accent/20 font-heading text-5xl leading-none">
                     &ldquo;
                   </span>
@@ -123,7 +123,7 @@ export default function ReviewsContent() {
                     {review.text}
                   </p>
                   <div className="flex items-center gap-3 mt-auto pt-4 border-t border-white/5">
-                    <div className="w-10 h-10 bg-accent/20 flex items-center justify-center">
+                    <div className="w-10 h-10 bg-accent/20 flex items-center justify-center rounded-lg">
                       <span className="text-accent font-heading font-bold text-sm">
                         {review.name[0]}
                       </span>

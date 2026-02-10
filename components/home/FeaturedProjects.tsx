@@ -68,7 +68,7 @@ export default function FeaturedProjects() {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  className="relative overflow-hidden aspect-[4/3]"
+                  className="relative overflow-hidden aspect-[4/3] rounded-lg"
                 >
                   <Image
                     src={project.image}
@@ -80,7 +80,7 @@ export default function FeaturedProjects() {
 
                   {/* Category tag */}
                   <div className="absolute top-4 left-4">
-                    <span className="inline-block px-3 py-1 bg-accent/90 text-white text-xs font-heading font-semibold uppercase tracking-wider">
+                    <span className="inline-block px-3 py-1 bg-accent/90 text-white text-xs font-heading font-semibold uppercase tracking-wider rounded-md">
                       {project.category}
                     </span>
                   </div>

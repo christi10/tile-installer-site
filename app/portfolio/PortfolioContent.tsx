@@ -115,8 +115,19 @@ export default function PortfolioContent() {
   return (
     <main className="pt-20">
       {/* Hero */}
-      <section className="py-24 bg-primary-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24 bg-primary-light overflow-hidden">
+        {/* Background image - mobile only */}
+        <div className="absolute inset-0 md:hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1920&q=80')",
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-light/90 via-primary-light/80 to-primary-light" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             label="Portfolio"
             title="Our Work Speaks for Itself"
@@ -135,7 +146,7 @@ export default function PortfolioContent() {
                 <button
                   key={cat}
                   onClick={() => handleCategoryChange(cat)}
-                  className={`px-5 py-2 text-sm font-heading font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                  className={`px-5 py-2 text-sm font-heading font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer rounded-lg ${
                     activeCategory === cat
                       ? "bg-accent text-white"
                       : "bg-surface-dark text-text-muted hover:text-white border border-white/10"
@@ -173,7 +184,7 @@ export default function PortfolioContent() {
                       href={`/portfolio/${project.slug}`}
                       className="group block"
                     >
-                      <div className="relative overflow-hidden aspect-[4/3]">
+                      <div className="relative overflow-hidden aspect-[4/3] rounded-lg">
                         <Image
                           src={project.image}
                           alt={project.title}
@@ -183,7 +194,7 @@ export default function PortfolioContent() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
 
                         <div className="absolute top-4 left-4">
-                          <span className="inline-block px-3 py-1 bg-accent/90 text-white text-xs font-heading font-semibold uppercase tracking-wider">
+                          <span className="inline-block px-3 py-1 bg-accent/90 text-white text-xs font-heading font-semibold uppercase tracking-wider rounded-md">
                             {project.category}
                           </span>
                         </div>

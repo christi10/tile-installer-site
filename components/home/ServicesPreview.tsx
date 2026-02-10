@@ -58,7 +58,7 @@ export default function ServicesPreview() {
                 <motion.div
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.3 }}
-                  className="relative overflow-hidden bg-surface-dark h-full"
+                  className="relative overflow-hidden bg-surface-dark h-full rounded-lg"
                 >
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden">

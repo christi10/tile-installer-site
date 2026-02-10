@@ -105,7 +105,7 @@ export default function ServicesContent() {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  className="relative aspect-[4/3] overflow-hidden"
+                  className="relative aspect-[4/3] overflow-hidden rounded-lg"
                 >
                   <Image
                     src={service.image}

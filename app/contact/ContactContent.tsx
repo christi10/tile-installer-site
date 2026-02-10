@@ -80,7 +80,7 @@ export default function ContactContent() {
                       id="name"
                       name="name"
                       required
-                      className="w-full px-4 py-3 bg-surface-dark border border-white/10 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
+                      className="w-full px-4 py-3 bg-surface-dark border border-white/10 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors rounded-lg"
                       placeholder="John Smith"
                     />
                   </div>
@@ -96,7 +96,7 @@ export default function ContactContent() {
                       id="email"
                       name="email"
                       required
-                      className="w-full px-4 py-3 bg-surface-dark border border-white/10 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
+                      className="w-full px-4 py-3 bg-surface-dark border border-white/10 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors rounded-lg"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -114,7 +114,7 @@ export default function ContactContent() {
                       type="tel"
                       id="phone"
                       name="phone"
-                      className="w-full px-4 py-3 bg-surface-dark border border-white/10 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
+                      className="w-full px-4 py-3 bg-surface-dark border border-white/10 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors rounded-lg"
                       placeholder="+44 123 456 7890"
                     />
                   </div>
@@ -128,7 +128,7 @@ export default function ContactContent() {
                     <select
                       id="service"
                       name="service"
-                      className="w-full px-4 py-3 bg-surface-dark border border-white/10 text-white focus:outline-none focus:border-accent transition-colors"
+                      className="w-full px-4 py-3 bg-surface-dark border border-white/10 text-white focus:outline-none focus:border-accent transition-colors rounded-lg"
                     >
                       <option value="">Select a service</option>
                       <option value="residential">Residential Tiling</option>
@@ -151,7 +151,7 @@ export default function ContactContent() {
                     name="message"
                     rows={6}
                     required
-                    className="w-full px-4 py-3 bg-surface-dark border border-white/10 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-surface-dark border border-white/10 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors resize-none rounded-lg"
                     placeholder="Describe your project, area size, preferred tile type, timeline..."
                   />
                 </div>
@@ -159,7 +159,7 @@ export default function ContactContent() {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="w-full sm:w-auto px-8 py-4 bg-accent text-white font-heading font-semibold uppercase tracking-wide hover:bg-accent-light transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                  className="w-full sm:w-auto px-8 py-4 bg-accent text-white font-heading font-semibold uppercase tracking-wide hover:bg-accent-light transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer rounded-lg"
                 >
                   {status === "sending" ? "Sending..." : "Send Message"}
                 </button>
@@ -186,7 +186,7 @@ export default function ContactContent() {
                   </h3>
                   <ul className="space-y-4">
                     <li className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-accent/10 flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 bg-accent/10 flex items-center justify-center shrink-0 rounded-lg">
                         <svg
                           className="w-5 h-5 text-accent"
                           fill="none"
@@ -205,11 +205,11 @@ export default function ContactContent() {
                         <p className="text-white font-semibold text-sm">
                           Phone
                         </p>
-                        <p className="text-text-muted">+44 (0) 123 456 7890</p>
+                        <a href="tel:+441234567890" className="text-text-muted hover:text-accent transition-colors">+44 (0) 123 456 7890</a>
                       </div>
                     </li>
                     <li className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-accent/10 flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 bg-accent/10 flex items-center justify-center shrink-0 rounded-lg">
                         <svg
                           className="w-5 h-5 text-accent"
                           fill="none"
@@ -228,11 +228,11 @@ export default function ContactContent() {
                         <p className="text-white font-semibold text-sm">
                           Email
                         </p>
-                        <p className="text-text-muted">info@tilecraft.co.uk</p>
+                        <a href="mailto:info@tilecraft.co.uk" className="text-text-muted hover:text-accent transition-colors">info@tilecraft.co.uk</a>
                       </div>
                     </li>
                     <li className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-accent/10 flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 bg-accent/10 flex items-center justify-center shrink-0 rounded-lg">
                         <svg
                           className="w-5 h-5 text-accent"
                           fill="none"
@@ -285,7 +285,7 @@ export default function ContactContent() {
                   </ul>
                 </div>
 
-                <div className="bg-accent/10 border border-accent/20 p-6">
+                <div className="bg-accent/10 border border-accent/20 p-6 rounded-lg">
                   <h4 className="font-heading font-semibold text-accent mb-2">
                     Free Quotes
                   </h4>

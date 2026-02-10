@@ -50,7 +50,7 @@ export default function TestimonialHighlight() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {testimonials.map((testimonial, i) => (
             <ScrollReveal key={testimonial.name} delay={i * 0.15}>
-              <div className="bg-surface-dark p-8 border border-white/5 relative">
+              <div className="bg-surface-dark p-8 border border-white/5 relative rounded-lg">
                 {/* Quote mark */}
                 <span className="absolute top-4 right-6 text-accent/20 font-heading text-6xl leading-none">
                   &ldquo;
@@ -61,7 +61,7 @@ export default function TestimonialHighlight() {
                   {testimonial.text}
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-accent/20 flex items-center justify-center">
+                  <div className="w-10 h-10 bg-accent/20 flex items-center justify-center rounded-lg">
                     <span className="text-accent font-heading font-bold text-sm">
                       {testimonial.name[0]}
                     </span>
